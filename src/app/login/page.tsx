@@ -30,23 +30,33 @@ export default function LoginPage() {
   }
 
   return (
-    <form onSubmit={handleLogin}>
-      <input
-        type="email"
-        placeholder="E-mail"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-      <input
-        type="password"
-        placeholder="Senha"
-        value={senha}
-        onChange={(e) => setSenha(e.target.value)}
-        required
-      />
-      {erro && <p>{erro}</p>}
-      <button type="submit">Entrar</button>
-    </form>
+    <div className="min-h-screen bg-slate-950 flex items-center justify-center px-4">
+  <form onSubmit={handleLogin} className="bg-slate-900 border border-slate-800 rounded-xl p-8 w-full max-w-sm space-y-4">
+    <h1 className="text-white text-xl font-semibold mb-2">Entrar</h1>
+    <input
+      type="email"
+      placeholder="E-mail"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      required
+      className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
+    />
+    <input
+      type="password"
+      placeholder="Senha"
+      value={senha}
+      onChange={(e) => setSenha(e.target.value)}
+      required
+      className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
+    />
+    {erro && <p className="text-orange-400 text-sm">{erro}</p>}
+    <button
+      type="submit"
+      className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 rounded-lg transition"
+    >
+      Entrar
+    </button>
+  </form>
+</div>
   )
 }

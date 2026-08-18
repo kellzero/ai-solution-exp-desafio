@@ -41,29 +41,36 @@ export default function ConfiguracoesPage() {
     setNovaSenha('')
   }
 
-  return (
-    <div>
-      <h1>Configurações</h1>
-      <form onSubmit={handleSalvar}>
+ return (
+    <div className="max-w-md">
+      <h1 className="text-2xl font-bold text-white mb-6">Configurações</h1>
+      <form onSubmit={handleSalvar} className="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-4">
         <input
           placeholder="Nome"
           value={nome}
           onChange={(e) => setNome(e.target.value)}
+          className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
         />
         <input
           type="email"
           placeholder="E-mail"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
         />
         <input
           type="password"
           placeholder="Nova senha (deixe em branco para não alterar)"
           value={novaSenha}
           onChange={(e) => setNovaSenha(e.target.value)}
+          className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
         />
-        {mensagem && <p>{mensagem}</p>}
-        <button type="submit" disabled={salvando}>
+        {mensagem && <p className="text-sm text-orange-400">{mensagem}</p>}
+        <button
+          type="submit"
+          disabled={salvando}
+          className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 rounded-lg transition"
+        >
           {salvando ? 'Salvando...' : 'Salvar'}
         </button>
       </form>

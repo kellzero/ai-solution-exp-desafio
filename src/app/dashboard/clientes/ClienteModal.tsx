@@ -39,29 +39,44 @@ export default function ClienteModal({ cliente, onClose, onSalvo }: Props) {
   }
 
   return (
-    <div className="modal-overlay">
-      <div className="modal">
-        <h2>{cliente ? 'Editar cliente' : 'Novo cliente'}</h2>
-        <form onSubmit={handleSalvar}>
+    <div className="fixed inset-0 bg-black/60 flex items-center justify-center px-4 z-50">
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 w-full max-w-md">
+        <h2 className="text-white text-lg font-semibold mb-4">
+          {cliente ? 'Editar cliente' : 'Novo cliente'}
+        </h2>
+        <form onSubmit={handleSalvar} className="space-y-4">
           <input
             placeholder="Nome"
             value={nome}
             onChange={(e) => setNome(e.target.value)}
             required
+            className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
           />
           <input
             placeholder="Contato"
             value={contato}
             onChange={(e) => setContato(e.target.value)}
             required
+            className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
           />
-          <select value={status} onChange={(e) => setStatus(e.target.value as 'ativo' | 'inativo')}>
+          <select
+            value={status}
+            onChange={(e) => setStatus(e.target.value as 'ativo' | 'inativo')}
+            className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-orange-500"
+          >
             <option value="ativo">Ativo</option>
             <option value="inativo">Inativo</option>
           </select>
-          <div>
-            <button type="button" onClick={onClose}>Cancelar</button>
-            <button type="submit" disabled={salvando}>
+
+          <div className="flex justify-end gap-3 pt-2">
+            <button type="button" onClick={onClose} className="text-slate-400 hover:text-white px-4 py-2">
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              disabled={salvando}
+              className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg transition"
+            >
               {salvando ? 'Salvando...' : 'Salvar'}
             </button>
           </div>
