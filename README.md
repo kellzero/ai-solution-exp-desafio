@@ -10,6 +10,7 @@ Plataforma web com Home pública, autenticação e Dashboard com Gestão de Clie
 
 ## Decisões técnicas
 - Uso de Row Level Security (RLS) no Supabase com policies por `user_id`, garantindo isolamento de dados entre usuários na camada de banco.
+- Proteção de rotas via Next.js Middleware, checando sessão do Supabase antes de renderizar qualquer página sob /dashboard.
 
 ## Planejamento
 Board no Whimsical: [https://whimsical.com/kelvin-home/fluxograma-9yshiHhAm4fKDHEjuVeA6p]
