@@ -9,7 +9,7 @@ Plataforma web com Home pública, autenticação e Dashboard com Gestão de Clie
 - Cloudflare Pages (deploy)
 
 ## Decisões técnicas
-(preenchido a cada etapa)
+- Uso de Row Level Security (RLS) no Supabase com policies por `user_id`, garantindo isolamento de dados entre usuários na camada de banco.
 
 ## Planejamento
 Board no Whimsical: [https://whimsical.com/kelvin-home/fluxograma-9yshiHhAm4fKDHEjuVeA6p]
