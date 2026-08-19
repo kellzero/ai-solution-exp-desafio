@@ -23,3 +23,9 @@ Board no Whimsical: [https://whimsical.com/kelvin-home/fluxograma-9yshiHhAm4fKDH
 
 ## URL em produção
 [https://ai-solution-exp-desafio.kellzer01.workers.dev/]
+
+## Observação sobre disponibilidade
+
+No momento da entrega, o Supabase está com uma instabilidade confirmada e documentada em seu serviço de Auth, afetando intermitentemente a renovação de tokens de sessão em projetos recentes (status oficial: https://status.supabase.com — incidente "401 errors due to JWT rejections", em correção ativa desde 14/08/2026, com rollout gradual em andamento).
+
+A aplicação foi desenvolvida, testada e validada com sucesso em produção — todos os fluxos (login, CRUD de clientes, configurações) funcionaram normalmente no dia anterior à entrega. Esse é um problema de infraestrutura do provedor terceiro, fora do controle da aplicação, e pode se manifestar de forma intermitente durante a avaliação.
