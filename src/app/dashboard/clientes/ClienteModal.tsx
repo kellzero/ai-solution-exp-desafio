@@ -37,6 +37,15 @@ export default function ClienteModal({ cliente, onClose, onSalvo }: Props) {
     setSalvando(false)
     onSalvo()
   }
+  
+  function handleNomeChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const valor = e.target.value.replace(/[0-9]/g, '')
+    setNome(valor)
+  }
+  function handleContatoChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const valor = e.target.value.replace(/[^0-9]/g, '')
+    setContato(valor)
+  }
 
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center px-4 z-50">
@@ -48,14 +57,14 @@ export default function ClienteModal({ cliente, onClose, onSalvo }: Props) {
           <input
             placeholder="Nome"
             value={nome}
-            onChange={(e) => setNome(e.target.value)}
+            onChange={handleNomeChange}
             required
             className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
           />
           <input
             placeholder="Contato"
             value={contato}
-            onChange={(e) => setContato(e.target.value)}
+            onChange={handleContatoChange}
             required
             className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
           />

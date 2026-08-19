@@ -1,13 +1,23 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const [nome, setNome] = useState('')
   const router = useRouter()
+  const supabase = createClient()
+
+  useEffect(() => {
+    async function carregarUsuario() {
+      const { data: { user } } = await supabase.auth.getUser()
+      setNome(user?.user_metadata?.nome || user?.email || '')
+    }
+    carregarUsuario()
+  }, [])
 
   async function handleLogout() {
-    const supabase = createClient()
     await supabase.auth.signOut()
     router.push('/')
     router.refresh()
@@ -20,11 +30,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <a href="/dashboard/clientes" className="hover:text-orange-500 transition">Clientes</a>
           <a href="/dashboard/configuracoes" className="hover:text-orange-500 transition">Configurações</a>
         </nav>
-        <button
-          onClick={handleLogout}
-          className="text-slate-400 hover:text-white transition text-sm">
-          Sair
-        </button>
+        <div className="flex items-center gap-4">
+          <span className="text-slate-400 text-sm">Olá, {nome}</span>
+          <button onClick={handleLogout} className="text-slate-400 hover:text-white transition text-sm">
+            Sair
+          </button>
+        </div>
       </header>
       <main className="p-6">{children}</main>
     </div>
